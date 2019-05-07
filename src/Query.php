@@ -143,10 +143,6 @@ class Query
             }
         }
 
-        if (! \is_null($this->timezone)) {
-            $data['timezone'] = $this->timezone;
-        }
-
         if (\is_int($this->page) && $this->page > 0) {
             $data['page'] = $this->page;
 

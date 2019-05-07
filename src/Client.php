@@ -60,20 +60,6 @@ class Client extends \Laravie\Codex\Client
     }
 
     /**
-     * Handle uses using via.
-     *
-     * @param \Laravie\Codex\Contracts\Request $request
-     *
-     * @return \Laravie\Codex\Contracts\Request
-     */
-    public function via(RequestContract $request): RequestContract
-    {
-        $request->setClient($this);
-
-        return $request;
-    }
-
-    /**
      * Get resource default namespace.
      *
      * @return string

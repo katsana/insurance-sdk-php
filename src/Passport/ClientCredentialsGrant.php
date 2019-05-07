@@ -24,8 +24,6 @@ class ClientCredentialsGrant extends Request
             \array_filter(\compact('scope'))
         );
 
-        echo '<pre>';
-
         return $this->send('POST', 'oauth/token', $this->getApiHeaders(), $body)
                     ->validateWith(function ($statusCode, $response) use ($body, $scope) {
                         if ($statusCode !== 200) {
