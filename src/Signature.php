@@ -2,8 +2,8 @@
 
 namespace Katsana\Insurance;
 
-use Psr\Http\Message\ResponseInterface;
 use Laravie\Codex\Security\TimeLimitSignature\Verify;
+use Psr\Http\Message\ResponseInterface;
 
 class Signature
 {

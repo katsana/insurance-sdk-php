@@ -17,7 +17,7 @@ class Insurer extends Request
     public function all(?Query $query = null): Response
     {
         return $this->send(
-            'GET', "insurers", $this->getApiHeaders(), $this->buildHttpQuery($query)
+            'GET', 'insurers', $this->getApiHeaders(), $this->buildHttpQuery($query)
         );
     }
 }

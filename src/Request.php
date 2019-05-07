@@ -28,7 +28,7 @@ abstract class Request extends \Laravie\Codex\Request
     {
         $headers = [
             'Accept' => "application/vnd.insure.{$this->getVersion()}+json",
-            'Content-Type' => "application/json",
+            'Content-Type' => 'application/json',
         ];
 
         if (! \is_null($accessToken = $this->client->getAccessToken())) {

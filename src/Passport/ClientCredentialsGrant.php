@@ -12,8 +12,8 @@ class ClientCredentialsGrant extends Request
     /**
      * Create access token.
      *
-     * @param string $username
-     * @param string $password
+     * @param string      $username
+     * @param string      $password
      * @param string|null $scope
      *
      * @return \Katsana\Insurance\Response
@@ -42,8 +42,8 @@ class ClientCredentialsGrant extends Request
     protected function getApiHeaders(): array
     {
         return [
-            'Accept' => "application/vnd.insure.v1+json",
-            'Content-Type' => "application/json",
+            'Accept' => 'application/vnd.insure.v1+json',
+            'Content-Type' => 'application/json',
         ];
     }
 

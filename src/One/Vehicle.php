@@ -2,7 +2,6 @@
 
 namespace Katsana\Insurance\One;
 
-use Katsana\Insurance\Query;
 use Laravie\Codex\Contracts\Response;
 
 class Vehicle extends Request
@@ -10,7 +9,7 @@ class Vehicle extends Request
     /**
      * Save a vehicle information.
      *
-     * @param array  $payload  Array of vehicle and owner's data.
+     * @param array $payload array of vehicle and owner's data
      *
      * @return \Katsana\Insurance\Response
      */
@@ -19,15 +18,15 @@ class Vehicle extends Request
         $this->requiresAccessToken();
 
         return $this->send(
-            'POST', "vehicles?include=customer", $this->getApiHeaders(), $this->mergeApiBody($payload)
+            'POST', 'vehicles?include=customer', $this->getApiHeaders(), $this->mergeApiBody($payload)
         );
     }
 
     /**
      * Pay for a quotation belonging to a specific vehicle.
      *
-     * @param string  $plateNumber  Vehicle's plate number.
-     * @param string  $insurerCode  Insurer's product code.
+     * @param string $plateNumber vehicle's plate number
+     * @param string $insurerCode insurer's product code
      *
      * @return \Katsana\Insurance\Response
      */

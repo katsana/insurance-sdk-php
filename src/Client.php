@@ -4,7 +4,6 @@ namespace Katsana\Insurance;
 
 use Http\Client\Common\HttpMethodsClient as HttpClient;
 use Laravie\Codex\Concerns\Passport;
-use Laravie\Codex\Contracts\Request as RequestContract;
 use Laravie\Codex\Discovery;
 
 class Client extends \Laravie\Codex\Client

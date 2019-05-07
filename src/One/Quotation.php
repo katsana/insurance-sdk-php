@@ -2,7 +2,6 @@
 
 namespace Katsana\Insurance\One;
 
-use Katsana\Insurance\Query;
 use Laravie\Codex\Contracts\Response;
 
 class Quotation extends Request
@@ -10,9 +9,9 @@ class Quotation extends Request
     /**
      * Draft a new quotation.
      *
-     * @param string  $plateNumber  Vehicle's plate number.
-     * @param string  $insurerCode  Insurer's product code.
-     * @param array   $payload      Array of vehicle and owner's data.
+     * @param string $plateNumber vehicle's plate number
+     * @param string $insurerCode insurer's product code
+     * @param array  $payload     array of vehicle and owner's data
      *
      * @return \Katsana\Insurance\Response
      */
@@ -30,9 +29,9 @@ class Quotation extends Request
     /**
      * Update quotation belonging to a specific vehicle.
      *
-     * @param string  $plateNumber  Vehicle's plate number.
-     * @param string  $insurerCode  Insurer's product code.
-     * @param array   $payload      Array of values for quotation.
+     * @param string $plateNumber vehicle's plate number
+     * @param string $insurerCode insurer's product code
+     * @param array  $payload     array of values for quotation
      *
      * @return \Katsana\Insurance\Response
      */
@@ -48,9 +47,9 @@ class Quotation extends Request
     /**
      * Pay for a quotation belonging to a specific vehicle.
      *
-     * @param string  $plateNumber  Vehicle's plate number.
-     * @param string  $insurerCode  Insurer's product code.
-     * @param array   $payload      Array of values for quotation.
+     * @param string $plateNumber vehicle's plate number
+     * @param string $insurerCode insurer's product code
+     * @param array  $payload     array of values for quotation
      *
      * @return \Katsana\Insurance\Response
      */
