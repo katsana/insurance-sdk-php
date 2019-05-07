@@ -12,7 +12,7 @@ abstract class Request extends \Laravie\Codex\Request
      *
      * @param \Psr\Http\Message\ResponseInterface $response
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Katsana\Insurance\Response
      */
     protected function responseWith(ResponseInterface $response): ResponseContract
     {
@@ -53,7 +53,7 @@ abstract class Request extends \Laravie\Codex\Request
     /**
      * Build query string from Katsana\Sdk\Query.
      *
-     * @param \Katsana\Sdk\Query $query
+     * @param \Katsana\Insurance\Query $query
      *
      * @return array
      */

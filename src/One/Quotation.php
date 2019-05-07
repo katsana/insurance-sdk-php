@@ -14,7 +14,7 @@ class Quotation extends Request
      * @param string  $insurerCode  Insurer's product code.
      * @param array   $payload      Array of vehicle and owner's data.
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Katsana\Insurance\Response
      */
     public function draft(string $plateNumber, string $insurerCode, array $payload): Response
     {
@@ -34,7 +34,7 @@ class Quotation extends Request
      * @param string  $insurerCode  Insurer's product code.
      * @param array   $payload      Array of values for quotation.
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Katsana\Insurance\Response
      */
     public function update(string $plateNumber, string $insurerCode, array $payload): Response
     {
@@ -52,7 +52,7 @@ class Quotation extends Request
      * @param string  $insurerCode  Insurer's product code.
      * @param array   $payload      Array of values for quotation.
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Katsana\Insurance\Response
      */
     public function pay(string $plateNumber, string $insurerCode, array $payload): Response
     {

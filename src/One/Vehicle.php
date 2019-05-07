@@ -12,7 +12,7 @@ class Vehicle extends Request
      *
      * @param array  $payload  Array of vehicle and owner's data.
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Katsana\Insurance\Response
      */
     public function save(array $payload): Response
     {
@@ -29,7 +29,7 @@ class Vehicle extends Request
      * @param string  $plateNumber  Vehicle's plate number.
      * @param string  $insurerCode  Insurer's product code.
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Katsana\Insurance\Response
      */
     public function save(string $plateNumber, string $insurerCode, array $payload): Response
     {

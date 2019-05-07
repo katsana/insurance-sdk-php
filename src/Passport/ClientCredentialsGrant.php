@@ -16,7 +16,7 @@ class ClientCredentialsGrant extends Request
      * @param string $password
      * @param string|null $scope
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Katsana\Insurance\Response
      */
     public function authenticate(?string $scope = '*'): Response
     {

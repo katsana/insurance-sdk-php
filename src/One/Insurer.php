@@ -12,7 +12,7 @@ class Insurer extends Request
      *
      * @param \Katsana\Insurance\Query|null $query
      *
-     * @return \Laravie\Codex\Contracts\Response
+     * @return \Katsana\Insurance\Response
      */
     public function all(?Query $query = null): Response
     {
