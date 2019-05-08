@@ -12,8 +12,6 @@ class ClientCredentialsGrant extends Request
     /**
      * Create access token.
      *
-     * @param string      $username
-     * @param string      $password
      * @param string|null $scope
      *
      * @return \Katsana\Insurance\Response
