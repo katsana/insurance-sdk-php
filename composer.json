@@ -14,6 +14,11 @@
             "Katsana\\Insurance\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Katsana\\Insurance\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": ">=7.1",
         "laravie/codex": "^4.0 || ^5.0",
