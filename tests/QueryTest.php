@@ -106,4 +106,13 @@ class QueryTest extends TestCase
             return ['content' => array_merge($customs, $data)];
         }));
     }
+
+    /** @test */
+    public function it_cant_be_initiated_with_unsupported_method()
+    {
+        $this->expectException('BadMethodCallException');
+        $this->expectExceptionMessage("Katsana\Insurance\Query::foo() method doesn't exist!");
+
+        Query::foo(20);
+    }
 }
