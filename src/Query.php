@@ -2,6 +2,15 @@
 
 namespace Katsana\Insurance;
 
+use BadMethodCallException;
+
+/**
+ * @method $this includes(array|string $includes)
+ * @method $this excludes(array $excludes)
+ * @method $this with(string $name, mixed $value)
+ * @method $this forPage(int|null $page = null)
+ * @method $this take(int|null $perPage = null)
+ */
 class Query
 {
     /**
@@ -40,9 +49,18 @@ class Query
     protected $customs = [];
 
     /**
+     * The methods that should be accessed using magic method.
+     *
+     * @var array
+     */
+    protected $passthru = [
+        'includes', 'excludes', 'with', 'forPage', 'take',
+    ];
+
+    /**
      * Set includes data.
      *
-     * @param array $includes
+     * @param array|string $includes
      *
      * @return $this
      */
@@ -58,7 +76,7 @@ class Query
     /**
      * Set excludes data.
      *
-     * @param array $excludes
+     * @param array|string $excludes
      *
      * @return $this
      */
@@ -164,7 +182,11 @@ class Query
      */
     public function __call(string $method, array $parameters)
     {
-        return $this->$method(...$parameters);
+        if (\in_array($method, $this->passthru)) {
+            return $this->$method(...$parameters);
+        }
+
+        throw new BadMethodCallException(__CLASS__."::{$method}() method doesn't exist!");
     }
 
     /**
