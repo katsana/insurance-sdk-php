@@ -59,6 +59,18 @@ class Client extends \Laravie\Codex\Client
     }
 
     /**
+     * Make a client using access token.
+     *
+     * @param string $accessToken
+     *
+     * @return static
+     */
+    public static function fromAccessToken(string $accessToken)
+    {
+        return static::make(null, null)->setAccessToken($accessToken);
+    }
+
+    /**
      * Get resource default namespace.
      *
      * @return string
