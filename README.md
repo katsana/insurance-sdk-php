@@ -12,6 +12,7 @@ KATSANA Insurance Renewal SDK for PHP
     - [Creating Client](#creating-client)
     - [Handling Response](#handling-response)
     - [Using the API](#using-the-api)
+* [Usages](#usages)
 
 ## Installation
 
@@ -132,4 +133,22 @@ This method allow you to have more control on which version to be used.
 $insurer = $sdk->via(new Katsana\Insurance\One\Insurer());
 
 $response = $insurer->all();
+```
+
+## Usages
+
+### Get List of Insurer
+
+```php
+$insurer = $sdk->uses('Insurer');
+
+$response = $insurer->all();
+
+var_dump($response->toArray());
+```
+
+```php
+use Katsana\Insurance\One\Insurer;
+
+$insurer = $sdk->via(new Insurer());
 ```

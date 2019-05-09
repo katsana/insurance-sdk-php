@@ -8,4 +8,4 @@
 /.phpunit.result.cache
 
 # Example
-/*.php
+/examples/**/*.php
