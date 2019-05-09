@@ -137,7 +137,9 @@ $response = $insurer->all();
 
 ## Usages
 
-### Get List of Insurer
+### Get List of Insurers
+
+List of insurers availables.
 
 ```php
 $insurer = $sdk->uses('Insurer');
@@ -145,6 +147,29 @@ $insurer = $sdk->uses('Insurer');
 $response = $insurer->all();
 
 var_dump($response->toArray());
+```
+
+```json
+{
+    "data": [{
+        "country_code": "MY",
+        "name": "RHB Insurance",
+        "partner": false,
+        "product_code": null
+    },
+    {
+        "country_code":"MY",
+        "name":"Allianz Malaysia Berhad",
+        "partner":true,
+        "product_code":null
+    },
+    {
+        "country_code":"MY",
+        "name":"Takaful Ikhlas",
+        "partner":false,
+        "product_code":null
+    }]
+}
 ```
 
 ```php
