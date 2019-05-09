@@ -44,7 +44,6 @@ class ClientCredentialsGrant extends Request
     {
         return [
             'Accept' => 'application/vnd.insure.v1+json',
-            'Content-Type' => 'application/json',
         ];
     }
 
