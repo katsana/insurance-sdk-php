@@ -30,7 +30,7 @@ class Vehicle extends Request
      *
      * @return \Katsana\Insurance\Response
      */
-    public function save(string $plateNumber, string $insurerCode, array $payload): Response
+    public function pay(string $plateNumber, string $insurerCode, array $payload): Response
     {
         $this->requiresAccessToken();
 
