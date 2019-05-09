@@ -139,7 +139,9 @@ $response = $insurer->all();
 
 ### Get List of Insurers
 
-List of insurers availables.
+Use this API to get a complete list of available Insurers.
+
+#### SDK Query
 
 ```php
 $insurer = $sdk->uses('Insurer');
@@ -148,6 +150,17 @@ $response = $insurer->all();
 
 var_dump($response->toArray());
 ```
+
+#### Response Parameters
+
+| Parameters   | Description
+|:-------------|:--------------------
+| country_code |
+| name         |
+| partner      | 
+| product_code |
+
+##### Response Sample 
 
 ```json
 {
@@ -170,10 +183,4 @@ var_dump($response->toArray());
         "product_code":null
     }]
 }
-```
-
-```php
-use Katsana\Insurance\One\Insurer;
-
-$insurer = $sdk->via(new Insurer());
 ```
