@@ -2,6 +2,7 @@
 
 namespace Katsana\Insurance\Tests\Passport;
 
+use Katsana\Insurance\Client;
 use Katsana\Insurance\Passport\ClientCredentialsGrant;
 use Katsana\Insurance\Response;
 use Katsana\Insurance\Tests\TestCase;
@@ -33,7 +34,6 @@ class ClientCredentialsGrantTest extends TestCase
         $this->assertSame('secret', $client->getAccessToken());
     }
 
-
     /** @test */
     public function it_cant_authenticate_when_response_is_not_200()
     {
@@ -53,5 +53,16 @@ class ClientCredentialsGrantTest extends TestCase
         $client = $this->makeClientWithAccessToken($faker);
 
         $response = $client->via(new ClientCredentialsGrant())->authenticate();
+    }
+
+    /** @test */
+    public function it_cant_attempt_to_authenticate_without_client_id_and_secret()
+    {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Missing client_id and client_secret information!');
+
+        $client = Client::fromAccessToken('foo');
+
+        $client->via(new ClientCredentialsGrant())->authenticate();
     }
 }

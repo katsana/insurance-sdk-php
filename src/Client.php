@@ -2,9 +2,9 @@
 
 namespace Katsana\Insurance;
 
-use Laravie\Codex\Contracts\Response as ResponseContract;
 use Http\Client\Common\HttpMethodsClient as HttpClient;
 use Laravie\Codex\Concerns\Passport;
+use Laravie\Codex\Contracts\Response as ResponseContract;
 use Laravie\Codex\Discovery;
 
 class Client extends \Laravie\Codex\Client
