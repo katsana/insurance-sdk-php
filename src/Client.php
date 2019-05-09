@@ -2,6 +2,7 @@
 
 namespace Katsana\Insurance;
 
+use Laravie\Codex\Contracts\Response as ResponseContract;
 use Http\Client\Common\HttpMethodsClient as HttpClient;
 use Laravie\Codex\Concerns\Passport;
 use Laravie\Codex\Discovery;
@@ -68,6 +69,18 @@ class Client extends \Laravie\Codex\Client
     public static function fromAccessToken(string $accessToken)
     {
         return static::make(null, null)->setAccessToken($accessToken);
+    }
+
+    /**
+     * Authenticate helper using OAuth2.
+     *
+     * @param string $scope
+     *
+     * @return \Laravie\Codex\Contracts\Response
+     */
+    public function authenticate(string $scope = '*'): ResponseContract
+    {
+        return $this->via(new Passport\ClientCredentialsGrant())->authenticate();
     }
 
     /**

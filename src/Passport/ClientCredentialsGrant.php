@@ -13,13 +13,20 @@ class ClientCredentialsGrant extends Request
     use Json;
 
     /**
+     * Automatically validate response.
+     *
+     * @var bool
+     */
+    protected $validateResponseAutomatically = false;
+
+    /**
      * Create access token.
      *
-     * @param string|null $scope
+     * @param string $scope
      *
      * @return \Katsana\Insurance\Response
      */
-    public function authenticate(?string $scope = '*'): Response
+    public function authenticate(string $scope = '*'): Response
     {
         $body = $this->mergeApiBody(
             \array_filter(\compact('scope'))
