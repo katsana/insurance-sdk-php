@@ -21,7 +21,7 @@ class Quotation extends Request
 
         $payload = array_merge_recursive($payload, ['vehicle' => ['plate_number' => $plateNumber]]);
 
-        return $this->send(
+        return $this->sendJson(
             'POST', "quotations/{$insurerCode}", $this->getApiHeaders(), $this->mergeApiBody($payload)
         );
     }
@@ -39,7 +39,7 @@ class Quotation extends Request
     {
         $this->requiresAccessToken();
 
-        return $this->send(
+        return $this->sendJson(
             'PATCH', "quotations/{$plateNumber}/{$insurerCode}", $this->getApiHeaders(), $this->mergeApiBody($payload)
         );
     }
@@ -57,7 +57,7 @@ class Quotation extends Request
     {
         $this->requiresAccessToken();
 
-        return $this->send(
+        return $this->sendJson(
             'POST', "quotations/{$plateNumber}/{$insurerCode}/pay", $this->getApiHeaders(), $this->mergeApiBody($payload)
         );
     }

@@ -17,7 +17,7 @@ class Vehicle extends Request
     {
         $this->requiresAccessToken();
 
-        return $this->send(
+        return $this->sendJson(
             'POST', 'vehicles?include=customer', $this->getApiHeaders(), $this->mergeApiBody($payload)
         );
     }
@@ -34,7 +34,7 @@ class Vehicle extends Request
     {
         $this->requiresAccessToken();
 
-        return $this->send(
+        return $this->sendJson(
             'POST', "quotations/{$plateNumber}/{$insurerCode}/pay", $this->getApiHeaders(), $this->mergeApiBody($payload)
         );
     }

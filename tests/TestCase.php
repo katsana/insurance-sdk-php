@@ -12,7 +12,7 @@ abstract class TestCase extends PHPUnit
 {
     const CLIENT_ID = 'homestead';
     const CLIENT_SECRET = 'secret';
-    // const ACCESS_TOKEN = 'AckfSECXIvnK5r28GVIWUAxmbBSjTsmF';
+    const ACCESS_TOKEN = 'AckfSECXIvnK5r28GVIWUAxmbBSjTsmF';
 
     const LATITUDE = 3.0093493;
     const LONGITUDE = 101.5976447;
@@ -61,8 +61,8 @@ abstract class TestCase extends PHPUnit
      *
      * @return \Katsana\Insurance\Client
      */
-    // protected function makeClientWithAccessToken(Faker $faker): Client
-    // {
-    //     return $this->makeClient($faker)->setAccessToken(static::ACCESS_TOKEN);
-    // }
+    protected function makeClientWithAccessToken(Faker $faker): Client
+    {
+        return $this->makeClient($faker)->setAccessToken(static::ACCESS_TOKEN);
+    }
 }
