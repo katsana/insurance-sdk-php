@@ -13,7 +13,7 @@ KATSANA Insurance Renewal SDK for PHP
     - [Handling Response](#handling-response)
     - [Using the API](#using-the-api)
 
-## Insurance
+## Installation
 
 To install through composer, simply put the following in your `composer.json` file:
 
