@@ -4,11 +4,14 @@ namespace Katsana\Insurance\Passport;
 
 use InvalidArgumentException;
 use Katsana\Insurance\Request;
+use Laravie\Codex\Concerns\Request\Json;
 use Laravie\Codex\Contracts\Response;
 use RuntimeException;
 
 class ClientCredentialsGrant extends Request
 {
+    use Json;
+
     /**
      * Create access token.
      *
@@ -22,7 +25,7 @@ class ClientCredentialsGrant extends Request
             \array_filter(\compact('scope'))
         );
 
-        return $this->send('POST', 'oauth/token', $this->getApiHeaders(), $body)
+        return $this->sendJson('POST', 'oauth/token', $this->getApiHeaders(), $body)
                     ->validateWith(function ($statusCode, $response) use ($body, $scope) {
                         if ($statusCode !== 200) {
                             throw new RuntimeException('Unable to generate access token!');

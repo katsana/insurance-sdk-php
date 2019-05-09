@@ -2,8 +2,8 @@
 
 namespace Katsana\Insurance\One;
 
-use Laravie\Codex\Concerns\Request\Json;
 use Katsana\Insurance\Request as BaseRequest;
+use Laravie\Codex\Concerns\Request\Json;
 
 abstract class Request extends BaseRequest
 {
