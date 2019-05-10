@@ -217,6 +217,8 @@ $response = $insurer->pay($plateNumber, $insurerCode, [
         'extended_flood' => false,
         'under_repair_compensation' => false,
         'passenger_negligence_liability' => false,
+    ],
+    'declarations' => [
         'pds' => true,
         'ind' => true,
         'lapse' => false, // required to be true if insurance has been lapsed!
