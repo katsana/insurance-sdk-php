@@ -53,7 +53,7 @@ $sdk = Client::make('client-id', 'client-secret');
 
 ##### Authenticate Using Client Credential Grant
 
-Once you initiate the client, you need to get an access token before using the services. All you need to do is:
+Once you initiate the client, you need to get an Access Token before using the services. All you need to do is:
 
 ```php
 $passport = $sdk->authenticate();
@@ -64,7 +64,7 @@ $sdk->setAccessToken($accessToken); // The `authenticate` method does this autom
 
 ```
 
-In most cases, you will be using the client with existing Access Token. You can initiate the client using the following code:
+Additionally, if you already have an Access Token, you can initiate a client with existing Access Token. You can initiate the client using the following code:
 
 ```php
 <?php
@@ -166,12 +166,12 @@ var_dump($response->toArray());
 
 #### Response Parameters
 
-| Parameters   | Description
-|:-------------|:--------------------
-| country_code |
-| name         |
-| partner      | 
-| product_code |
+| Parameters    | Type        | Description
+| :-------------|:------------|:--------------
+| `country_code`| string      | The country code, e.g: `MY`
+| `name`        | string      | Insurer name
+| `partner`     | boolean     | Whether we can make renewal
+| `product_code`| string|null | Product code
 
 ##### Response Sample 
 
