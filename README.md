@@ -166,12 +166,12 @@ var_dump($response->toArray());
 
 #### Response Parameters
 
-| Parameters    | Type        | Description
-| :-------------|:------------|:--------------
-| `country_code`| string      | The country code, e.g: `MY`
-| `name`        | string      | Insurer name
-| `partner`     | boolean     | Whether we can make renewal
-| `product_code`| string|null | Product code
+| Parameters    | Type    | Description
+| :-------------| :------ |:--------------
+| `country_code`| string  | The country code, e.g: `MY`
+| `name`        | string  | Insurer name
+| `partner`     | boolean | Whether we can make renewal
+| `product_code`| string  | Product code
 
 ##### Response Sample 
 
