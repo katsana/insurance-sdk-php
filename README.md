@@ -14,7 +14,7 @@ KATSANA Insurance Renewal SDK for PHP
     - [Using the API](#using-the-api)
 * [Usages](#usages)
     - [Get List of Insurers](#get-list-of-insurers)
-    - 
+    - [Make Payment](#make-payment)
 
 ## Installation
 
@@ -200,7 +200,7 @@ var_dump($response->toArray());
 }
 ```
 
-### Make payment
+### Make Payment
 
 Use this API to make a payment for Insurance Renewal.
 
