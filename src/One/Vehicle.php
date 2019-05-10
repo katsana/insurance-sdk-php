@@ -27,10 +27,11 @@ class Vehicle extends Request
      *
      * @param string $plateNumber vehicle's plate number
      * @param string $insurerCode insurer's product code
+     * @param array $payload
      *
      * @return \Katsana\Insurance\Response
      */
-    public function pay(string $plateNumber, string $insurerCode, array $payload): Response
+    public function pay(string $plateNumber, string $insurerCode, array $payload = []): Response
     {
         $this->requiresAccessToken();
 

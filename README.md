@@ -13,6 +13,8 @@ KATSANA Insurance Renewal SDK for PHP
     - [Handling Response](#handling-response)
     - [Using the API](#using-the-api)
 * [Usages](#usages)
+    - [Get List of Insurers](#get-list-of-insurers)
+    - 
 
 ## Installation
 
@@ -197,3 +199,31 @@ var_dump($response->toArray());
     }]
 }
 ```
+
+### Make payment
+
+Use this API to make a payment for Insurance Renewal.
+
+#### SDK Query
+
+```php
+$insurer = $sdk->uses('Vehicle');
+
+$response = $insurer->pay($plateNumber, $insurerCode, [
+    'sum_covered' => $sumCovered,
+    'addons' => [
+        'windscreen' => $windscreenCovered,
+        'flood' => false,
+        'extended_flood' => false,
+        'under_repair_compensation' => false,
+        'passenger_negligence_liability' => false,
+        'pds' => true,
+        'ind' => true,
+        'lapse' => false, // required to be true if insurance has been lapsed!
+    ]
+]);
+
+var_dump($response->toArray());
+```
+
+
