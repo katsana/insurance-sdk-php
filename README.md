@@ -209,9 +209,11 @@ Use this API to make a payment for Insurance Renewal.
 ```php
 $insurer = $sdk->uses('Vehicle');
 
-$response = $insurer->pay($plateNumber, $insurerCode, [
-    'sum_covered' => $sumCovered,
-    'addons' => [
+$response = $insurer->pay(
+    $plateNumber, 
+    $insurerCode, 
+    $sumCovered, 
+    [
         'windscreen' => $windscreenCovered,
         'flood' => false,
         'extended_flood' => false,
@@ -221,6 +223,7 @@ $response = $insurer->pay($plateNumber, $insurerCode, [
     'declarations' => [
         'pds' => true,
         'ind' => true,
+        'pdpa' => true,
         'lapse' => false, // required to be true if insurance has been lapsed!
     ]
 ]);
