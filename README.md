@@ -220,7 +220,7 @@ $response = $insurer->pay(
         'under_repair_compensation' => false,
         'passenger_negligence_liability' => false,
     ],
-    'declarations' => [
+    [
         'pds' => true,
         'ind' => true,
         'pdpa' => true,
