@@ -51,6 +51,19 @@ use Katsana\Insurance\Client;
 $sdk = Client::make('client-id', 'client-secret');
 ```
 
+##### Authenticate Using Client Credential Grant
+
+Once you initiate the client, you need to get an access token before using the services. All you need to do is:
+
+```php
+$passport = $sdk->authenticate();
+
+$accessToken = $passport->toArray()['access_token'];
+
+$sdk->setAccessToken($accessToken); // The `authenticate` method does this automatically.
+
+```
+
 In most cases, you will be using the client with existing Access Token. You can initiate the client using the following code:
 
 ```php
