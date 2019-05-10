@@ -213,14 +213,14 @@ $response = $insurer->pay(
     $plateNumber, 
     $insurerCode, 
     $sumCovered, 
-    [
+    $addons = [
         'windscreen' => $windscreenCovered,
         'flood' => false,
         'extended_flood' => false,
         'under_repair_compensation' => false,
         'passenger_negligence_liability' => false,
     ],
-    [
+    $declaration = [
         'pds' => true,
         'ind' => true,
         'pdpa' => true,
