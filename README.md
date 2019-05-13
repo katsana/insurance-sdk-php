@@ -179,26 +179,59 @@ var_dump($response->toArray());
 
 ```json
 {
-    "data": [{
-        "country_code": "MY",
-        "name": "RHB Insurance",
-        "partner": false,
-        "product_code": null
-    },
-    {
-        "country_code":"MY",
-        "name":"Allianz Malaysia Berhad",
-        "partner":true,
-        "product_code":null
-    },
-    {
-        "country_code":"MY",
-        "name":"Takaful Ikhlas",
-        "partner":false,
-        "product_code":null
-    }]
+  "data": [{
+    "country_code": "MY",
+    "name": "RHB Insurance",
+    "partner": false,
+    "product_code": null
+  },
+  {
+    "country_code":"MY",
+    "name":"Allianz Malaysia Berhad",
+    "partner":true,
+    "product_code":null
+  },
+  {
+    "country_code":"MY",
+    "name":"Takaful Ikhlas",
+    "partner":false,
+    "product_code":null
+  }]
 }
 ```
+### Save Vehicle Information
+
+Use this API to store and update Vehicle infromation.
+
+```php
+$vehicles = $sdk->uses('Vehicle');
+
+$response = $sdk->save(
+  $plateNumber,
+  $vehicleInformation = [
+    'chasis_number' => $chasisNumber,
+    'engine_number' => $engineNumber,
+    'year_manufactured' => $yearManufactured,
+    'maker' => $makerName,
+    'model' => $modelName,
+  ],
+  $ownerInformation = [
+    'fullname' => $ownerFullname,
+    'birthdate' => $ownerBirthDate,
+    'email' => $ownerEmail,
+    'nric' => $ownerNRIC,
+    'phone_no' => $ownerPhoneNumber,
+    'postcode' => $ownerPostcode,
+  ],
+  $insuranceInformation = [
+    'ended_at' => $insuranceEndedAt
+    
+  ],
+);
+
+var_dump($response->toArray());
+```
+
 
 ### Make Payment
 
@@ -207,25 +240,25 @@ Use this API to make a payment for Insurance Renewal.
 #### SDK Query
 
 ```php
-$insurer = $sdk->uses('Vehicle');
+$vehicles = $sdk->uses('Vehicle');
 
-$response = $insurer->pay(
-    $plateNumber, 
-    $insurerCode, 
-    $sumCovered, 
-    $addons = [
-        'windscreen' => $windscreenCovered,
-        'flood' => false,
-        'extended_flood' => false,
-        'under_repair_compensation' => false,
-        'passenger_negligence_liability' => false,
-    ],
-    $declaration = [
-        'pds' => true,
-        'ind' => true,
-        'pdpa' => true,
-        'lapse' => false, // required to be true if insurance has been lapsed!
-    ]
+$response = $vehicles->pay(
+  $plateNumber, 
+  $insurerCode, 
+  $sumCovered, 
+  $addons = [
+    'windscreen' => $windscreenCovered,
+    'flood' => false,
+    'extended_flood' => false,
+    'under_repair_compensation' => false,
+    'passenger_negligence_liability' => false,
+  ],
+  $declaration = [
+    'pds' => true,
+    'ind' => true,
+    'pdpa' => true,
+    'lapse' => false, // required to be true if insurance has been lapsed!
+  ]
 ]);
 
 var_dump($response->toArray());
