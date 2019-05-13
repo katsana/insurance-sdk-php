@@ -14,6 +14,7 @@ KATSANA Insurance Renewal SDK for PHP
     - [Using the API](#using-the-api)
 * [Usages](#usages)
     - [Get List of Insurers](#get-list-of-insurers)
+    - [Save Vehicle Information](#save-vehicle-information)
     - [Make Payment](#make-payment)
 
 ## Installation
