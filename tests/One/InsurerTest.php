@@ -19,7 +19,7 @@ class InsurerTest extends TestCase
         $faker = Faker::create()
                         ->call('GET', $headers)
                         ->expectEndpointIs('https://api.insure.katsana.com/insurers')
-                        ->shouldResponseWith(200, '{"data":[]}');
+                        ->shouldResponseWith(200, '{"data":[{"country_code": "MY","name": "RHB Insurance","partner": false,"product_code": null},{"country_code":"MY","name":"Allianz Malaysia Berhad","partner":true,"product_code":null},{"country_code":"MY","name":"Takaful Ikhlas","partner":false,"product_code":null}]}');
 
         $response = $this->makeClientWithAccessToken($faker)
                         ->uses('Insurer')
