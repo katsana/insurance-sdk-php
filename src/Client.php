@@ -3,6 +3,7 @@
 namespace Katsana\Insurance;
 
 use Http\Client\Common\HttpMethodsClient as HttpClient;
+use Katsana\Insurance\Passport\ClientCredentialsGrant;
 use Laravie\Codex\Concerns\Passport;
 use Laravie\Codex\Contracts\Response as ResponseContract;
 use Laravie\Codex\Discovery;
@@ -80,7 +81,7 @@ class Client extends \Laravie\Codex\Client
      */
     public function authenticate(string $scope = '*'): ResponseContract
     {
-        return $this->via(new Passport\ClientCredentialsGrant())->authenticate();
+        return $this->via(new ClientCredentialsGrant())->authenticate();
     }
 
     /**

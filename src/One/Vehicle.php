@@ -9,13 +9,26 @@ class Vehicle extends Request
     /**
      * Save a vehicle information.
      *
-     * @param array $payload array of vehicle and owner's data
+     * @param string $plateNumber          vehicle's plate number
+     * @param array  $vehicleInformation   vehicle's information
+     * @param array  $ownerInformation     vehicle owner's information
+     * @param array  $insuranceInformation vehicle insurance's information
      *
      * @return \Katsana\Insurance\Response
      */
-    public function save(array $payload): Response
-    {
+    public function save(
+        string $plateNumber,
+        array $vehicleInformation,
+        array $ownerInformation,
+        array $insuranceInformation
+    ): Response {
         $this->requiresAccessToken();
+
+        $payload = array_merge([
+            'plate_number' => $plateNumber,
+            'owner' => $ownerInformation,
+            'insurance' => $insuranceInformation,
+        ], $vehicleInformation);
 
         return $this->sendJson(
             'POST', 'vehicles?include=customer', $this->getApiHeaders(), $this->mergeApiBody($payload)
@@ -27,8 +40,8 @@ class Vehicle extends Request
      *
      * @param string $plateNumber vehicle's plate number
      * @param string $insurerCode insurer's product code
-     * @param int $sumCovered amount of covered sum
-     * @param array $payload
+     * @param int    $sumCovered  amount of covered sum
+     * @param array  $payload
      *
      * @return \Katsana\Insurance\Response
      */
@@ -46,7 +59,7 @@ class Vehicle extends Request
             'addons' => $addons,
             'declarations' => \array_merge([
                 'pds' => false, 'ind' => false, 'pdpa' => false, 'lapse' => false,
-            ], $declarations)
+            ], $declarations),
         ];
 
         return $this->sendJson(
