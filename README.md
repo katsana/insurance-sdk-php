@@ -241,9 +241,9 @@ Use this API to make a payment for Insurance Renewal.
 #### SDK Query
 
 ```php
-$vehicles = $sdk->uses('Vehicle');
+$renewal = $sdk->uses('Renewal');
 
-$response = $vehicles->pay(
+$response = $renewal->pay(
   $plateNumber, 
   $insurerCode, 
   $sumCovered, 
