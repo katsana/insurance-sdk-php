@@ -9,7 +9,7 @@ class Renewal extends Request
      *
      * @param string $plateNumber  vehicle's plate number
      * @param string $insurerCode  insurer's product code
-     * @param int    $sumCovered   amount of covered sum
+     * @param float  $sumCovered   amount of covered sum
      * @param array  $addons       insurance policy addons
      * @param array  $declarations insurance policy declaration of agreements
      *
