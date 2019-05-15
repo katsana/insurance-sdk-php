@@ -43,22 +43,4 @@ class Quotation extends Request
             'PATCH', "quotations/{$plateNumber}/{$insurerCode}", $this->getApiHeaders(), $this->mergeApiBody($payload)
         );
     }
-
-    /**
-     * Pay for a quotation belonging to a specific vehicle.
-     *
-     * @param string $plateNumber vehicle's plate number
-     * @param string $insurerCode insurer's product code
-     * @param array  $payload     array of values for quotation
-     *
-     * @return \Katsana\Insurance\Response
-     */
-    public function pay(string $plateNumber, string $insurerCode, array $payload): Response
-    {
-        $this->requiresAccessToken();
-
-        return $this->sendJson(
-            'POST', "quotations/{$plateNumber}/{$insurerCode}/pay", $this->getApiHeaders(), $this->mergeApiBody($payload)
-        );
-    }
 }
