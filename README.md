@@ -209,13 +209,6 @@ $vehicles = $sdk->uses('Vehicle');
 
 $response = $sdk->save(
   $plateNumber,
-  $vehicleInformation = [
-    'chasis_number' => $chasisNumber,
-    'engine_number' => $engineNumber,
-    'year_manufactured' => $yearManufactured,
-    'maker' => $makerName,
-    'model' => $modelName,
-  ],
   $ownerInformation = [
     'fullname' => $ownerFullname,
     'birthdate' => $ownerBirthDate,
@@ -225,8 +218,14 @@ $response = $sdk->save(
     'postcode' => $ownerPostcode,
   ],
   $insuranceInformation = [
-    'ended_at' => $insuranceEndedAt
-    
+    'ended_at' => $insuranceEndedAt,
+  ],
+  $vehicleInformation = [
+    'chasis_number' => $chasisNumber,
+    'engine_number' => $engineNumber,
+    'year_manufactured' => $yearManufactured,
+    'maker' => $makerName,
+    'model' => $modelName,
   ],
 );
 
