@@ -7,10 +7,11 @@ class Renewal extends Request
     /**
      * Pay for a quotation belonging to a specific vehicle.
      *
-     * @param string $plateNumber vehicle's plate number
-     * @param string $insurerCode insurer's product code
-     * @param int    $sumCovered  amount of covered sum
-     * @param array  $payload
+     * @param string $plateNumber  vehicle's plate number
+     * @param string $insurerCode  insurer's product code
+     * @param int    $sumCovered   amount of covered sum
+     * @param array  $addons       insurance policy addons
+     * @param array  $declarations insurance policy declaration of agreements
      *
      * @return \Katsana\Insurance\Response
      */

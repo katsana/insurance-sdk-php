@@ -51,6 +51,6 @@ class VehicleTest extends TestCase
 
         $response = $this->makeClientWithAccessToken($faker)
                         ->uses('Vehicle')
-                        ->save($plateNumber, $vehicleInformation, $ownerInformation, $insuranceInformation);
+                        ->save($plateNumber, $ownerInformation, $insuranceInformation, $vehicleInformation);
     }
 }
