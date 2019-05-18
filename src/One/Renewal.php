@@ -2,6 +2,8 @@
 
 namespace Katsana\Insurance\One;
 
+use Laravie\Codex\Contracts\Response;
+
 class Renewal extends Request
 {
     /**
