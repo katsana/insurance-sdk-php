@@ -29,4 +29,17 @@ class InsurerTest extends TestCase
 
         $this->assertInstanceOf(Response::class, $response);
     }
+
+    /** @test */
+    public function it_cant_list_insurers_without_access_token()
+    {
+        $this->expectException('Katsana\Insurance\Exceptions\MissingAccessToken');
+        $this->expectExceptionMessage('Request requires valid access token to be available!');
+
+        $faker = Faker::create();
+
+        $this->makeClient($faker)
+            ->uses('Insurer')
+            ->all();
+    }
 }

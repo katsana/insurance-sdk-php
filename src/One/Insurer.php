@@ -16,6 +16,8 @@ class Insurer extends Request
      */
     public function all(?Query $query = null): Response
     {
+        $this->requiresAccessToken();
+
         return $this->send(
             'GET', 'insurers', $this->getApiHeaders(), $this->buildHttpQuery($query)
         );
