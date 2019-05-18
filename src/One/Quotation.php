@@ -9,11 +9,12 @@ class Quotation extends Request
     /**
      * Draft a new quotation.
      *
-     * @param string     $plateNumber      vehicle's plate number
-     * @param string     $insurerCode      insurer's product code
-     * @param array      $ownerInformation vehicle owner's information
-     * @param float|null $sumCovered       amount of covered sum
-     * @param array      $addons           insurance policy addons
+     * @param string     $plateNumber        vehicle's plate number
+     * @param string     $insurerCode        insurer's product code
+     * @param array      $ownerInformation   vehicle owner's information
+     * @param array      $vehicleInformation vehicle's information
+     * @param float|null $sumCovered         amount of covered sum
+     * @param array      $addons             insurance policy addons
      *
      * @return \Katsana\Insurance\Response
      */
@@ -21,6 +22,7 @@ class Quotation extends Request
         string $plateNumber,
         string $insurerCode,
         array $ownerInformation,
+        array $vehicleInformation = [],
         $sumCovered = null,
         array $addons = []
     ): Response {
@@ -31,6 +33,8 @@ class Quotation extends Request
         $payload = [
             'owner' => $ownerInformation,
             'vehicle' => $vehicleInformation,
+            'sum_covered' => $sumCovered,
+            'addons' => $addons,
         ];
 
         return $this->sendJson(

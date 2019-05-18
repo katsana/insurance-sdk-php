@@ -2,11 +2,10 @@
 
 namespace Katsana\Insurance\Tests\One;
 
-use Katsana\Insurance\Response;
-use Laravie\Codex\Testing\Faker;
 use Faker\Factory as FakerFactory;
-use Katsana\Insurance\One\Renewal;
+use Katsana\Insurance\Response;
 use Katsana\Insurance\Tests\TestCase;
+use Laravie\Codex\Testing\Faker;
 
 class RenewalTest extends TestCase
 {
