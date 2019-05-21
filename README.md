@@ -157,7 +157,7 @@ $response = $insurer->all();
 
 Use this API to get a complete list of available Insurers.
 
-#### SDK Query
+#### Code Example
 
 ```php
 $insurer = $sdk->uses('Insurer');
@@ -200,9 +200,65 @@ var_dump($response->toArray());
   }]
 }
 ```
+
+### Create Draft Quotation
+
+Use this API to create a motor insurance renewal quotation draft.
+
+#### Code Example
+
+```php
+$quotation = $sdk->uses('Quotation');
+
+$response = $quotation->draft(
+  $plateNumber,
+  $insurerCode,
+  $ownerInformation
+);
+
+var_dump($response->toArray());
+```
+
+#### Request Parameters
+
+| Parameters           | Type   | Description
+| :--------------------| :----- |:--------------
+| `$plateNumber`       | string | The country code, e.g: `MY`
+| `$insurerCode`       | string | Insurer's code.
+| `$ownerInformation`  | array  | Owner information.
+| `$vehicleInformation`| array  | Vehicle information.
+
+### Update Quotation
+
+Use this API to update draft quotation for motor insurance renewal.
+
+#### Code Example
+
+```php
+$quotation = $sdk->uses('Quotation');
+
+$response = $quotation->update(
+  $plateNumber,
+  $insurerCode,
+  $sumCovered,
+  $addons
+)
+```
+
+#### Request Parameters
+
+| Parameters     |Type    | Description
+| :------------- |:-------|:--------------
+| `$plateNumber` |string  | The country code, e.g: `MY`
+| `$insurerCode` |string  | Insurer's code.
+| `$sumCovered`  |float   | Total sum covered for the vehicle in MYR
+| `$addons`      |array   | Insurance renewal addons.
+
 ### Save Vehicle Information
 
-Use this API to store and update Vehicle infromation.
+Use this API to store and update Vehicle information.
+
+#### Code Example
 
 ```php
 $vehicles = $sdk->uses('Vehicle');
@@ -232,12 +288,20 @@ $response = $sdk->save(
 var_dump($response->toArray());
 ```
 
+#### Request Parameters
+
+| Parameters             | Type  | Description
+| :----------------------| :-----|:--------------
+| `$plateNumber`         | string| The country code, e.g: `MY`
+| `$ownerInformation`    | array | Owner information.
+| `$insuranceInformation`| array | Insurance information.
+| `$vehicleInformation`  | array | Vehicle information.
 
 ### Make Payment
 
 Use this API to make a payment for Insurance Renewal.
 
-#### SDK Query
+#### Code Example
 
 ```php
 $renewal = $sdk->uses('Renewal');
@@ -264,4 +328,12 @@ $response = $renewal->pay(
 var_dump($response->toArray());
 ```
 
+#### Request Parameters
 
+| Parameters     | Type  | Description
+| :------------- | :-----|:--------------
+| `$plateNumber` | string| The country code, e.g: `MY`
+| `$insurerCode` | string| Insurer's code.
+| `$sumCovered`  | float | Total sum covered for the vehicle in MYR
+| `$addons`      | array | Insurance renewal addons.
+| `$declaration` | array | Insurance renewal declaration.
