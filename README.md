@@ -447,6 +447,40 @@ var_dump($response->toArray());
 | `$insuranceInformation`| array | Insurance information.
 | `$vehicleInformation`  | array | Vehicle information.
 
+#### Response Example
+
+```json
+{
+  "data": {
+    "plate_number": "ABC123",
+    "maker": "Proton",
+    "model": "Iriz",
+    "variant": null,
+    "year_manufactured": 2018,
+    "chasis_no": null,
+    "engine_no": null,
+    "customer": {
+      "data": {
+        "fullname": "Ali bin Abu",
+        "email": "ali@katasanalabs.com",
+        "ic": "880102030405",
+        "ic_type": "nric",
+        "marital": null,
+        "birthdate": "1988-01-02",
+        "phone_no":"60123456789",
+        "line1": null,
+        "line2": null,
+        "line3": null,
+        "postcode": "47150",
+        "city": null,
+        "state": null,
+        "country": null
+      }
+    }
+  }
+}
+```
+
 ### Make Payment
 
 Use this API to make a payment for Insurance Renewal.
@@ -487,3 +521,70 @@ var_dump($response->toArray());
 | `$sumCovered`  | float | Total sum covered for the vehicle in MYR
 | `$addons`      | array | Insurance renewal addons.
 | `$declaration` | array | Insurance renewal declaration.
+
+
+#### Response Example
+
+```json
+{
+  "data": {
+    "options": {
+      "addons":{
+        "windscreen":[]
+      },
+      "sum_covered":[]
+    },
+    "proposed":{
+      "addons":[],
+      "amount": {
+        "ncd":601.21,
+        "sst":26.56,
+        "total":479.27,
+        "rebate":49.19,
+        "cashback":0,
+        "after_tax":469.27,
+        "before_tax":442.71
+      },
+      "sum_covered":30000,
+      "contribution":{
+        "basic":1093.1,
+        "gross":491.9,
+        "total":479.27,
+        "after_rebate":442.71
+      }
+    },
+    "discounts":{
+      "addons":{
+        "flood":{
+          "rules":[
+            {
+              "if":"addon",
+              "is":"windscreen","min_value":1
+            }
+          ],
+          "discount_percent":0
+        },
+        "extended_flood":{
+          "rules":[
+            {
+              "if":"addon","is":"windscreen","min_value":1
+            }
+          ],
+          "discount_percent":0
+        }
+      },
+      "sum_covered":[]
+    },
+    "stamp_duty":10,
+    "ncd_percent":55,
+    "sst_percent":6,
+    "sum_covered":{
+      "max":30000,"min":20000
+    },
+    "rebate_percent":10,
+    "cashback_percent":0,
+    "pay_url": "https:\/\/insure-staging.katsanalabs.com\/public\/payments\/1",
+    "completion_url": "https:\/\/insure-staging.katsanalabs.com\/public\/payments\/complete"
+  }
+}
+```
