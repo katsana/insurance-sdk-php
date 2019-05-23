@@ -170,7 +170,7 @@ var_dump($response->toArray());
 #### Response Parameters
 
 | Parameters    | Type             | Description
-| :-------------| :--------------- |:--------------
+|:--------------|:-----------------|:--------------
 | `country_code`| string           | The country code, e.g: `MY`
 | `name`        | string           | Insurer name
 | `partner`     | boolean          | Whether we can make renewal
@@ -222,7 +222,7 @@ var_dump($response->toArray());
 #### Request Parameters
 
 | Parameters           | Type   | Description
-| :--------------------| :----- |:--------------
+|:---------------------|:-------|:--------------
 | `$plateNumber`       | string | The country code, e.g: `MY`
 | `$insurerCode`       | string | Insurer's code.
 | `$ownerInformation`  | array  | Owner information.
@@ -323,11 +323,86 @@ $response = $quotation->update(
 #### Request Parameters
 
 | Parameters     |Type    | Description
-| :------------- |:-------|:--------------
+|:---------------|:-------|:--------------
 | `$plateNumber` |string  | The country code, e.g: `MY`
 | `$insurerCode` |string  | Insurer's code.
 | `$sumCovered`  |float   | Total sum covered for the vehicle in MYR
 | `$addons`      |array   | Insurance renewal addons.
+
+#### Response Example
+
+```json
+{
+  "data": {
+    "status": "pending",
+    "ends_at": "2020-06-09 00:00:00",
+    "starts_at": "2019-06-09 00:00:00",
+    "expires_at": "2019-07-08 00:00:00",
+    "insurer_code": "MI",
+    "quotation": {
+      "options": {
+        "addons": {
+          "windscreen": []
+        },
+        "sum_covered": []
+      },
+      "proposed": {
+        "addons":[],
+        "amount": {
+          "ncd": 601.21,
+          "sst": 26.56,
+          "total": 479.27,
+          "rebate": 49.19,
+          "cashback": 0,
+          "after_tax": 469.27,
+          "before_tax": 442.71
+        },
+        "sum_covered": 30000,
+        "contribution": {
+          "basic": 1093.1,
+          "gross": 491.9,
+          "total": 479.27,
+          "after_rebate": 442.71
+        }
+      },
+      "discounts": {
+        "addons": {
+          "flood": {
+            "rules": [
+              {
+                "if": "addon",
+                "is": "windscreen",
+                "min_value": 1
+              }
+            ],
+            "discount_percent": 0
+          },
+          "extended_flood": {
+            "rules": [
+              {
+                "if": "addon",
+                "is": "windscreen",
+                "min_value": 1
+              }
+            ],
+            "discount_percent": 0
+          }
+        },
+        "sum_covered": []
+      },
+      "stamp_duty": 10,
+      "ncd_percent": 55,
+      "sst_percent": 6,
+      "sum_covered": {
+        "max": 30000,
+        "min": 20000
+      },
+      "rebate_percent": 10,
+      "cashback_percent": 0
+    }
+  }
+}
+```
 
 ### Save Vehicle Information
 
@@ -366,7 +441,7 @@ var_dump($response->toArray());
 #### Request Parameters
 
 | Parameters             | Type  | Description
-| :----------------------| :-----|:--------------
+|:-----------------------|:------|:--------------
 | `$plateNumber`         | string| The country code, e.g: `MY`
 | `$ownerInformation`    | array | Owner information.
 | `$insuranceInformation`| array | Insurance information.
@@ -406,7 +481,7 @@ var_dump($response->toArray());
 #### Request Parameters
 
 | Parameters     | Type  | Description
-| :------------- | :-----|:--------------
+|:-------------- |:------|:--------------
 | `$plateNumber` | string| The country code, e.g: `MY`
 | `$insurerCode` | string| Insurer's code.
 | `$sumCovered`  | float | Total sum covered for the vehicle in MYR
