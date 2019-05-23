@@ -519,13 +519,18 @@ var_dump($response->toArray());
 
 #### Request Parameters
 
-| Parameters     | Type  | Description
-|:-------------- |:------|:--------------
-| `$plateNumber` | string| The country code, e.g: `MY`
-| `$insurerCode` | string| Insurer's code.
-| `$sumCovered`  | float | Total sum covered for the vehicle in MYR
-| `$addons`      | array | Insurance renewal addons.
-| `$declaration` | array | Insurance renewal declaration.
+| Parameter                  | Type   | Rule     |  Description
+| :--------------------------|:-------| :------- |:--------------
+| `$plateNumber`             | string | required | The vehicle license plate.
+| `$insurerCode`             | string | required | Insurer's code.
+| `$sumCovered`              | float  | required | Total sum covered for the vehicle in `MYR`.
+| `$addons['windscreen']`    | float | optional | Total covered for windscreen coverage.
+| `$addons['flood']`         | boolean | optional | Enable basic flood coverage.
+| `$addons['extended_flood']`| boolean | optional | Enable extended flood coverage.
+| `$declaration['pds']`      | boolean | required | ...
+| `$declaration['ind']`      | boolean | required | ...
+| `$declaration['pdpa']`     | boolean | required | ...
+| `$declaration['lapse']`    | boolean | optional | ...
 
 
 #### Response Example
@@ -596,3 +601,8 @@ var_dump($response->toArray());
   }
 }
 ```
+
+##### Notes:
+
+* `pay_url` is the URL user must be redirected to, to start payment process.
+* Once user has completed payment, they will be redirected to `completion_url`. Mobile application can listen to this URL to detect end of payment process.
