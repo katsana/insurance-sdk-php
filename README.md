@@ -226,12 +226,12 @@ var_dump($response->toArray());
 
 #### Request Parameters
 
-| Parameters           | Type   | Description
-|:---------------------|:-------|:--------------
-| `$plateNumber`       | string | The country code, e.g: `MY`
-| `$insurerCode`       | string | Insurer's code.
-| `$ownerInformation`  | array  | Owner information.
-| `$vehicleInformation`| array  | Vehicle information.
+| Parameter                  |Type   |Rule    |  Description
+| :--------------------------|:----- |:-------|:--------------
+| `$plateNumber`             | string |required | The vehicle license plate.
+| `$insurerCode`             | string |required | Insurer's Product Code.
+| `$ownerInformation`  | array  | | Owner information.
+| `$vehicleInformation`| array  | | Vehicle information.
 
 #### Response Example
 
@@ -327,12 +327,14 @@ $response = $quotation->update(
 
 #### Request Parameters
 
-| Parameters     |Type    | Description
-|:---------------|:-------|:--------------
-| `$plateNumber` |string  | The country code, e.g: `MY`
-| `$insurerCode` |string  | Insurer's code.
-| `$sumCovered`  |float   | Total sum covered for the vehicle in MYR
-| `$addons`      |array   | Insurance renewal addons.
+| Parameter                  |Type   |Rule    |  Description
+| :--------------------------|:----- |:-------|:--------------
+| `$plateNumber`             | string |required | The vehicle license plate.
+| `$insurerCode`             | string |required | Insurer's Product Code.
+| `$sumCovered`              | float  |required | Total sum covered for the vehicle in `MYR`.
+| `$addons['windscreen']`    | float |optional | Total covered for windscreen coverage.
+| `$addons['flood']`         | boolean |optional | Enable basic flood coverage.
+| `$addons['extended_flood']`| boolean |optional | Enable extended flood coverage.
 
 #### Response Example
 
@@ -445,12 +447,12 @@ var_dump($response->toArray());
 
 #### Request Parameters
 
-| Parameters             | Type  | Description
-|:-----------------------|:------|:--------------
-| `$plateNumber`         | string| The country code, e.g: `MY`
-| `$ownerInformation`    | array | Owner information.
-| `$insuranceInformation`| array | Insurance information.
-| `$vehicleInformation`  | array | Vehicle information.
+| Parameter                          | Type   |Rule    |  Description
+| :----------------------------------| :----- |:-------|:--------------
+| `$plateNumber`                     | string |required | The vehicle license plate.
+| `$ownerInformation`                | array  |required| Owner information.
+| `$insuranceInformation['ended_at']`| string |required| Current vehicle insurance expiry date in `Y-m-d` format.
+| `$vehicleInformation`              | array  |        | Vehicle information.
 
 #### Response Example
 
@@ -519,18 +521,18 @@ var_dump($response->toArray());
 
 #### Request Parameters
 
-| Parameter                  | Type   | Rule     |  Description
-| :--------------------------|:-------| :------- |:--------------
-| `$plateNumber`             | string | required | The vehicle license plate.
-| `$insurerCode`             | string | required | Insurer's code.
-| `$sumCovered`              | float  | required | Total sum covered for the vehicle in `MYR`.
-| `$addons['windscreen']`    | float | optional | Total covered for windscreen coverage.
-| `$addons['flood']`         | boolean | optional | Enable basic flood coverage.
-| `$addons['extended_flood']`| boolean | optional | Enable extended flood coverage.
-| `$declaration['pds']`      | boolean | required | ...
-| `$declaration['ind']`      | boolean | required | ...
-| `$declaration['pdpa']`     | boolean | required | ...
-| `$declaration['lapse']`    | boolean | optional | ...
+| Parameter                  | Type   |Rule     |  Description
+| :--------------------------|:-------|:--------|:--------------
+| `$plateNumber`             | string |required | The vehicle license plate.
+| `$insurerCode`             | string |required | Insurer's Product Code.
+| `$sumCovered`              | float  |required | Total sum covered for the vehicle in `MYR`.
+| `$addons['windscreen']`    | float |optional | Total covered for windscreen coverage.
+| `$addons['flood']`         | boolean |optional | Enable basic flood coverage.
+| `$addons['extended_flood']`| boolean |optional | Enable extended flood coverage.
+| `$declaration['pds']`      | boolean |required | ...
+| `$declaration['ind']`      | boolean |required | ...
+| `$declaration['pdpa']`     | boolean |required | ...
+| `$declaration['lapse']`    | boolean |optional | ...
 
 
 #### Response Example
