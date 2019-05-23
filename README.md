@@ -228,6 +228,81 @@ var_dump($response->toArray());
 | `$ownerInformation`  | array  | Owner information.
 | `$vehicleInformation`| array  | Vehicle information.
 
+#### Response Example
+
+```json
+{
+  "data": {
+    "status": "pending",
+    "ends_at": "2020-06-09 00:00:00",
+    "starts_at": "2019-06-09 00:00:00",
+    "expires_at": "2019-06-23 10:33:07",
+    "insurer_code": "MI",
+    "quotation": {
+      "options": {
+        "addons": {
+          "windscreen": []
+        },
+        "sum_covered": []
+      },
+      "proposed":{
+        "addons": [],
+        "amount": {
+          "ncd": 529.71,
+          "sst": 23.4,
+          "total": 423.46,
+          "rebate": 43.34,
+          "cashback": 0,
+          "after_tax": 413.46,
+          "before_tax": 390.06
+        },
+        "sum_covered": 25000,
+        "contribution": {
+          "basic": 963.1,
+          "gross": 433.4,
+          "total": 423.46,
+          "after_rebate": 390.06
+        }
+      },
+      "discounts": {
+        "addons": {
+          "flood": {
+            "rules": [
+              {
+                "if": "addon",
+                "is": "windscreen",
+                "min_value": 1
+              }
+            ],
+            "discount_percent": 0
+          },
+          "extended_flood":{
+            "rules":[
+              {
+                "if": "addon",
+                "is": "windscreen",
+                "min_value": 1
+              }
+            ],
+            "discount_percent":0
+          }
+        },
+        "sum_covered":[]
+      },
+      "stamp_duty": 10,
+      "ncd_percent": 55,
+      "sst_percent": 6,
+      "sum_covered": {
+        "max": 30000,
+        "min": 20000
+      },
+      "rebate_percent": 10,
+      "cashback_percent": 0
+    }
+  }
+}
+```
+
 ### Update Quotation
 
 Use this API to update draft quotation for motor insurance renewal.
