@@ -6,6 +6,7 @@ KATSANA Insurance Renewal SDK for PHP
 [![Total Downloads](https://poser.pugx.org/katsana/insurance-sdk-php/downloads)](https://packagist.org/packages/katsana/insurance-sdk-php)
 [![Latest Unstable Version](https://poser.pugx.org/katsana/insurance-sdk-php/v/unstable)](https://packagist.org/packages/katsana/insurance-sdk-php)
 [![License](https://poser.pugx.org/katsana/insurance-sdk-php/license)](https://packagist.org/packages/katsana/insurance-sdk-php)
+[![Coverage Status](https://coveralls.io/repos/github/katsana/insurance-sdk-php/badge.svg?branch=master)](https://coveralls.io/github/katsana/insurance-sdk-php?branch=master)
 
 * [Installation](#installation)
 * [Getting Started](#getting-started)
