@@ -7,6 +7,15 @@ use Laravie\Codex\Testing\Faker;
 
 class ClientTest extends TestCase
 {
+     /** @test */
+    public function it_can_set_endpoint_to_sandbox()
+    {
+        $client = $this->makeClient(Faker::create());
+        $client->useSandbox();
+
+        $this->assertSame('https://api.insure-staging.katsanalabs.com', $client->getApiEndpoint());
+    }
+
     /** @test */
     public function it_can_authenticate_using_passport()
     {

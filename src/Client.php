@@ -73,13 +73,23 @@ class Client extends \Laravie\Codex\Client
     }
 
     /**
+     * Use sandbox environment.
+     *
+     * @return $this
+     */
+    final public function useSandbox(): self
+    {
+        return $this->useCustomApiEndpoint('https://api.insure-staging.katsanalabs.com');
+    }
+
+    /**
      * Authenticate helper using OAuth2.
      *
      * @param string $scope
      *
      * @return \Laravie\Codex\Contracts\Response
      */
-    public function authenticate(string $scope = '*'): ResponseContract
+    final public function authenticate(string $scope = '*'): ResponseContract
     {
         return $this->via(new ClientCredentialsGrant())->authenticate();
     }
