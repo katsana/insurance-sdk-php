@@ -218,7 +218,10 @@ $quotation = $sdk->uses('Quotation');
 $response = $quotation->draft(
   $plateNumber,
   $insurerCode,
-  $ownerInformation
+  $driverInformation,
+  $vehicleInformation,
+  $sumCovered,
+  $addons
 );
 
 var_dump($response->toArray());
@@ -226,12 +229,28 @@ var_dump($response->toArray());
 
 #### Request Parameters
 
-| Parameter                  |Type   |Rule    |  Description
-| :--------------------------|:----- |:-------|:--------------
-| `$plateNumber`             | string |required | The vehicle license plate.
-| `$insurerCode`             | string |required | Insurer's Product Code.
-| `$ownerInformation`  | array  | | Owner information.
-| `$vehicleInformation`| array  | | Vehicle information.
+| Parameter                                 | Type   | Rule     |  Description
+| :-----------------------------------------| :------| :------- |:--------------
+| `$plateNumber`                            | string | required | The vehicle license plate.
+| `$insurerCode`                            | string | required | Insurer's Product Code.
+| `$driverInformation['fullname']`          | string | required | Driver's fullname.
+| `$driverInformation['birthdate']`         | string | required | Driver's birth date in `Y-m-d` format.
+| `$driverInformation['email']`             | string | required | Driver's e-mail address.
+| `$driverInformation['nric']`              | string | required | Driver's National Registration Identity Card (NRIC) ID.
+| `$driverInformation['phone_no']`          | string | required | Driver's phone number.
+| `$driverInformation['postcode']`          | string | required | Driver's current address postcode.
+| `$insuranceInformation['ended_at']`       | string | required | Current vehicle insurance expiry date in `Y-m-d` format.
+| `$vehicleInformation['maker']`            | string | optional | Vehicle's maker. E.g `Proton`, `Perodua`, `Honda` etc.
+| `$vehicleInformation['model']`            | string | optional | Vehicle's maker. E.g `Iriz`, `Persona`, `MyVi`, `Civic`, `Vios` etc.
+| `$vehicleInformation['year_manufactured']`| integer| optional | Vehicle's year of manufactured.
+| `$vehicleInformation['chasis_number']`    | string | optional | Vehicle's chassis number.
+| `$vehicleInformation['engine_number']`    | string | optional | Vehicle's engine number.
+| `$sumCovered`                              | float  | optional | Total sum covered for the vehicle in `MYR`.
+| `$addons['windscreen']`                    | float  | optional | Total covered for windscreen coverage.
+| `$addons['flood']`                         | boolean| optional | Enable basic flood coverage.
+| `$addons['extended_flood']`                | boolean| optional | Enable extended flood coverage. 
+| `$addons['under_repair_compensation']`     | boolean| optional | ...
+| `$addons['passenger_negligence_liability']`| boolean| optional | ...
 
 #### Response Example
 
@@ -327,14 +346,16 @@ $response = $quotation->update(
 
 #### Request Parameters
 
-| Parameter                  |Type   |Rule    |  Description
-| :--------------------------|:----- |:-------|:--------------
-| `$plateNumber`             | string |required | The vehicle license plate.
-| `$insurerCode`             | string |required | Insurer's Product Code.
-| `$sumCovered`              | float  |required | Total sum covered for the vehicle in `MYR`.
-| `$addons['windscreen']`    | float |optional | Total covered for windscreen coverage.
-| `$addons['flood']`         | boolean |optional | Enable basic flood coverage.
-| `$addons['extended_flood']`| boolean |optional | Enable extended flood coverage.
+| Parameter                                  | Type    | Rule     |  Description
+| :------------------------------------------| :------ | :------- |:--------------
+| `$plateNumber`                             | string  | required | The vehicle license plate.
+| `$insurerCode`                             | string  | required | Insurer's Product Code.
+| `$sumCovered`                              | float   | required | Total sum covered for the vehicle in `MYR`.
+| `$addons['windscreen']`                    | float   | optional | Total covered for windscreen coverage.
+| `$addons['flood']`                         | boolean | optional | Enable basic flood coverage.
+| `$addons['extended_flood']`                | boolean | optional | Enable extended flood coverage. 
+| `$addons['under_repair_compensation']`     | boolean | optional | ...
+| `$addons['passenger_negligence_liability']`| boolean | optional | ...
 
 #### Response Example
 
@@ -422,24 +443,9 @@ $vehicles = $sdk->uses('Vehicle');
 
 $response = $sdk->save(
   $plateNumber,
-  $ownerInformation = [
-    'fullname' => $ownerFullname,
-    'birthdate' => $ownerBirthDate,
-    'email' => $ownerEmail,
-    'nric' => $ownerNRIC,
-    'phone_no' => $ownerPhoneNumber,
-    'postcode' => $ownerPostcode,
-  ],
-  $insuranceInformation = [
-    'ended_at' => $insuranceEndedAt,
-  ],
-  $vehicleInformation = [
-    'chasis_number' => $chasisNumber,
-    'engine_number' => $engineNumber,
-    'year_manufactured' => $yearManufactured,
-    'maker' => $makerName,
-    'model' => $modelName,
-  ],
+  $driverInformation,
+  $insuranceInformation,
+  $vehicleInformation
 );
 
 var_dump($response->toArray());
@@ -447,12 +453,21 @@ var_dump($response->toArray());
 
 #### Request Parameters
 
-| Parameter                          | Type   |Rule    |  Description
-| :----------------------------------| :----- |:-------|:--------------
-| `$plateNumber`                     | string |required | The vehicle license plate.
-| `$ownerInformation`                | array  |required| Owner information.
-| `$insuranceInformation['ended_at']`| string |required| Current vehicle insurance expiry date in `Y-m-d` format.
-| `$vehicleInformation`              | array  |        | Vehicle information.
+| Parameter                                 | Type    | Rule     |  Description
+| :-----------------------------------------| :------ | :------- |:--------------
+| `$plateNumber`                            | string  | required | The vehicle license plate.
+| `$driverInformation['fullname']`          | string  | required | Driver's fullname.
+| `$driverInformation['birthdate']`         | string  | required | Driver's birth date in `Y-m-d` format.
+| `$driverInformation['email']`             | string  | required | Driver's e-mail address.
+| `$driverInformation['nric']`              | string  | required | Driver's National Registration Identity Card (NRIC) ID.
+| `$driverInformation['phone_no']`          | string  | required | Driver's phone number.
+| `$driverInformation['postcode']`          | string  | required | Driver's current address postcode.
+| `$insuranceInformation['ended_at']`       | string  | required | Current vehicle insurance expiry date in `Y-m-d` format.
+| `$vehicleInformation['maker']`            | string  | required | Vehicle's maker. E.g `Proton`, `Perodua`, `Honda` etc.
+| `$vehicleInformation['model']`            | string  | required | Vehicle's maker. E.g `Iriz`, `Persona`, `MyVi`, `Civic`, `Vios` etc.
+| `$vehicleInformation['year_manufactured']`| integer | required | Vehicle's year of manufactured.
+| `$vehicleInformation['chasis_number']`    | string  | optional | Vehicle's chassis number.
+| `$vehicleInformation['engine_number']`    | string  | optional | Vehicle's engine number.
 
 #### Response Example
 
@@ -501,19 +516,8 @@ $response = $renewal->pay(
   $plateNumber, 
   $insurerCode, 
   $sumCovered, 
-  $addons = [
-    'windscreen' => $windscreenCovered,
-    'flood' => false,
-    'extended_flood' => false,
-    'under_repair_compensation' => false,
-    'passenger_negligence_liability' => false,
-  ],
-  $declaration = [
-    'pds' => true,
-    'ind' => true,
-    'pdpa' => true,
-    'lapse' => false, // required to be true if insurance has been lapsed!
-  ]
+  $addons,
+  $declaration
 ]);
 
 var_dump($response->toArray());
@@ -521,19 +525,22 @@ var_dump($response->toArray());
 
 #### Request Parameters
 
-| Parameter                  | Type   |Rule     |  Description
-| :--------------------------|:-------|:--------|:--------------
-| `$plateNumber`             | string |required | The vehicle license plate.
-| `$insurerCode`             | string |required | Insurer's Product Code.
-| `$sumCovered`              | float  |required | Total sum covered for the vehicle in `MYR`.
-| `$addons['windscreen']`    | float |optional | Total covered for windscreen coverage.
-| `$addons['flood']`         | boolean |optional | Enable basic flood coverage.
-| `$addons['extended_flood']`| boolean |optional | Enable extended flood coverage.
-| `$declaration['pds']`      | boolean |required | ...
-| `$declaration['ind']`      | boolean |required | ...
-| `$declaration['pdpa']`     | boolean |required | ...
-| `$declaration['lapse']`    | boolean |optional | ...
+| Parameter                                   | Type    | Rule     |  Description
+| :------------------------------------------ | :------ | :------- |:----------
+| `$plateNumber`                              | string  | required | The vehicle license plate.
+| `$insurerCode`                              | string  | required | Insurer's Product Code.
+| `$sumCovered`                               | float   | required | Total sum covered for the vehicle in `MYR`.
+| `$addons['windscreen']`                     | float   | optional | Total covered for windscreen coverage.
+| `$addons['flood']`                          | boolean | optional | Enable basic flood coverage.
+| `$addons['extended_flood']`                 | boolean | optional | Enable extended flood coverage.
+| `$addons['under_repair_compensation']`      | boolean | optional | ...
+| `$addons['passenger_negligence_liability']` | boolean | optional | ...
+| `$declaration['pds']`                       | boolean | required | ...
+| `$declaration['ind']`                       | boolean | required | ...
+| `$declaration['pdpa']`                      | boolean | required | Required to be `true` to indicate user has agree to Insurance Renewal PDPA.
+| `$declaration['lapse']`                     | boolean | optional | Required to be `true` only if insurance has been expired but within the 90 days lapse duration!
 
+> Insurance renewal is not available for insurance that has been expired over 90 days!
 
 #### Response Example
 
