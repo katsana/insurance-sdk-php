@@ -24,7 +24,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
     "require": {
-        "katsana/insurance-sdk-php": "^1.0",
+        "katsana/insurance-sdk-php": "^0.1",
         "php-http/guzzle6-adapter": "^2.0"
     }
 }
@@ -34,7 +34,7 @@ To install through composer, simply put the following in your `composer.json` fi
 
 Above installation can also be simplify by using the following command:
 
-    composer require "php-http/guzzle6-adapter" "katsana/insurance-sdk-php=^1.0"
+    composer require "php-http/guzzle6-adapter" "katsana/insurance-sdk-php=^0.1"
 
 ### HTTP Adapter
 
@@ -180,24 +180,26 @@ var_dump($response->toArray());
 
 ```json
 {
-  "data": [{
-    "country_code": "MY",
-    "name": "RHB Insurance",
-    "partner": false,
-    "product_code": null
-  },
-  {
-    "country_code":"MY",
-    "name":"Allianz Malaysia Berhad",
-    "partner":true,
-    "product_code":null
-  },
-  {
-    "country_code":"MY",
-    "name":"Takaful Ikhlas",
-    "partner":false,
-    "product_code":null
-  }]
+  "data": [
+    {
+      "country_code": "MY",
+      "name": "RHB Insurance",
+      "partner": false,
+      "product_code": null
+    },
+    {
+      "country_code": "MY",
+      "name": "Allianz Malaysia Berhad",
+      "partner": true,
+      "product_code": null
+    },
+    {
+      "country_code": "MY",
+      "name": "Takaful Ikhlas",
+      "partner": false,
+      "product_code": null
+    }
+  ]
 }
 ```
 
@@ -245,7 +247,7 @@ var_dump($response->toArray());
         },
         "sum_covered": []
       },
-      "proposed":{
+      "proposed": {
         "addons": [],
         "amount": {
           "ncd": 529.71,
@@ -276,8 +278,8 @@ var_dump($response->toArray());
             ],
             "discount_percent": 0
           },
-          "extended_flood":{
-            "rules":[
+          "extended_flood": {
+            "rules": [
               {
                 "if": "addon",
                 "is": "windscreen",
@@ -287,7 +289,7 @@ var_dump($response->toArray());
             "discount_percent":0
           }
         },
-        "sum_covered":[]
+        "sum_covered": []
       },
       "stamp_duty": 10,
       "ncd_percent": 55,
@@ -347,7 +349,7 @@ $response = $quotation->update(
         "sum_covered": []
       },
       "proposed": {
-        "addons":[],
+        "addons": [],
         "amount": {
           "ncd": 601.21,
           "sst": 26.56,
@@ -467,7 +469,7 @@ var_dump($response->toArray());
         "ic_type": "nric",
         "marital": null,
         "birthdate": "1988-01-02",
-        "phone_no":"60123456789",
+        "phone_no": "60123456789",
         "line1": null,
         "line2": null,
         "line3": null,
@@ -529,60 +531,63 @@ var_dump($response->toArray());
 {
   "data": {
     "options": {
-      "addons":{
-        "windscreen":[]
+      "addons": {
+        "windscreen": []
       },
-      "sum_covered":[]
+      "sum_covered": []
     },
-    "proposed":{
-      "addons":[],
+    "proposed": {
+      "addons": [],
       "amount": {
-        "ncd":601.21,
-        "sst":26.56,
-        "total":479.27,
-        "rebate":49.19,
-        "cashback":0,
-        "after_tax":469.27,
-        "before_tax":442.71
+        "ncd": 601.21,
+        "sst": 26.56,
+        "total": 479.27,
+        "rebate": 49.19,
+        "cashback": 0,
+        "after_tax": 469.27,
+        "before_tax": 442.71
       },
-      "sum_covered":30000,
-      "contribution":{
-        "basic":1093.1,
-        "gross":491.9,
-        "total":479.27,
-        "after_rebate":442.71
+      "sum_covered": 30000,
+      "contribution": {
+        "basic": 1093.1,
+        "gross": 491.9,
+        "total": 479.27,
+        "after_rebate": 442.71
       }
     },
-    "discounts":{
-      "addons":{
-        "flood":{
-          "rules":[
+    "discounts": {
+      "addons": {
+        "flood": {
+          "rules": [
             {
-              "if":"addon",
-              "is":"windscreen","min_value":1
+              "if": "addon",
+              "is": "windscreen","min_value":1
             }
           ],
           "discount_percent":0
         },
-        "extended_flood":{
-          "rules":[
+        "extended_flood": {
+          "rules": [
             {
-              "if":"addon","is":"windscreen","min_value":1
+              "if": "addon",
+              "is": "windscreen",
+              "min_value": 1
             }
           ],
-          "discount_percent":0
+          "discount_percent": 0
         }
       },
-      "sum_covered":[]
+      "sum_covered": []
     },
-    "stamp_duty":10,
-    "ncd_percent":55,
-    "sst_percent":6,
-    "sum_covered":{
-      "max":30000,"min":20000
+    "stamp_duty": 10,
+    "ncd_percent": 55,
+    "sst_percent": 6,
+    "sum_covered": {
+      "max": 30000,
+      "min": 20000
     },
-    "rebate_percent":10,
-    "cashback_percent":0,
+    "rebate_percent": 10,
+    "cashback_percent": 0,
     "pay_url": "https:\/\/insure-staging.katsanalabs.com\/public\/payments\/1",
     "completion_url": "https:\/\/insure-staging.katsanalabs.com\/public\/payments\/complete"
   }
