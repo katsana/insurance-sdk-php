@@ -11,7 +11,7 @@ class Quotation extends Request
      *
      * @param string     $plateNumber        vehicle's plate number
      * @param string     $insurerCode        insurer's product code
-     * @param array      $ownerInformation   vehicle owner's information
+     * @param array      $driverInformation   vehicle driver's information
      * @param array      $vehicleInformation vehicle's information
      * @param float|null $sumCovered         amount of covered sum
      * @param array      $addons             insurance policy addons
@@ -21,7 +21,7 @@ class Quotation extends Request
     public function draft(
         string $plateNumber,
         string $insurerCode,
-        array $ownerInformation,
+        array $driverInformation,
         array $vehicleInformation = [],
         $sumCovered = null,
         array $addons = []
@@ -31,7 +31,7 @@ class Quotation extends Request
         $vehicleInformation['plate_number'] = $plateNumber;
 
         $payload = [
-            'owner' => $ownerInformation,
+            'owner' => $driverInformation,
             'vehicle' => $vehicleInformation,
             'sum_covered' => $sumCovered,
             'addons' => $addons,
