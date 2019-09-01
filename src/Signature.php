@@ -2,7 +2,7 @@
 
 namespace Katsana\Insurance;
 
-use Laravie\Codex\Security\TimeLimitSignature\Verify;
+use Laravie\Codex\Security\Signature\Verify;
 use Psr\Http\Message\ResponseInterface;
 
 class Signature
@@ -29,13 +29,12 @@ class Signature
      *
      * @param string $header
      * @param string $body
-     * @param int    $threshold
      *
      * @return bool
      */
-    final public function verify(string $header, string $body, int $threshold = 3600): bool
+    final public function verify(string $header, string $body): bool
     {
-        $signature = new Verify($this->key, 'sha256', $threshold);
+        $signature = new Verify($this->key, 'sha256');
 
         return $signature($body, $header);
     }
@@ -44,18 +43,16 @@ class Signature
      * Verify signature from PSR7 response object.
      *
      * @param \Psr\Http\Message\ResponseInterface $message
-     * @param int                                 $threshold
      *
      * @return bool
      */
-    final public function verifyFrom(ResponseInterface $message, int $threshold = 3600): bool
+    final public function verifyFrom(ResponseInterface $message): bool
     {
         $response = new Response($message);
 
         return $this->verify(
-            $response->getHeader('X-Signature')[0] ?? $response->getHeader('HTTP_X_SIGNATURE')[0],
-            $response->getBody(),
-            $threshold
+            $response->getHeader('X-Insurance-Signature')[0],
+            $response->getBody()
         );
     }
 }
