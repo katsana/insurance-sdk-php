@@ -7,7 +7,7 @@ use Laravie\Codex\Testing\Faker;
 
 class ClientTest extends TestCase
 {
-     /** @test */
+    /** @test */
     public function it_can_set_endpoint_to_sandbox()
     {
         $client = $this->makeClient(Faker::create());

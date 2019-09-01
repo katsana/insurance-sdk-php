@@ -10,7 +10,7 @@ class Vehicle extends Request
      * Save a vehicle information.
      *
      * @param string $plateNumber          vehicle's plate number
-     * @param array  $driverInformation     vehicle owner's information
+     * @param array  $driverInformation    vehicle owner's information
      * @param array  $insuranceInformation vehicle insurance's information
      * @param array  $vehicleInformation   vehicle's information
      *
