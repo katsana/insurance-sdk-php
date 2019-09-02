@@ -13,7 +13,7 @@ class SignatureTest extends TestCase
         $now = time();
         $payload = '{"device_id":123,"event":"Device+mobilized"}';
 
-        $response = $this->getMessageWithPayload('secret', $payload, $now);
+        $response = $this->getMessageWithPayload('secret', $payload);
 
         $signature = new Signature('secret');
         $this->assertTrue($signature->verifyFrom($response));
@@ -25,22 +25,10 @@ class SignatureTest extends TestCase
         $now = time();
         $payload = '{"device_id":123,"event":"Device+mobilized"}';
 
-        $response = $this->getMessageWithPayload('secret!', $payload, $now);
+        $response = $this->getMessageWithPayload('secret!', $payload);
 
         $signature = new Signature('secret');
         $this->assertFalse($signature->verifyFrom($response));
-    }
-
-    /** @test */
-    public function it_can_verify_response_when_timestamp_exceed_treshold()
-    {
-        $now = time() - 3600;
-        $payload = '{"device_id":123,"event":"Device+mobilized"}';
-
-        $response = $this->getMessageWithPayload('secret', $payload, $now);
-
-        $signature = new Signature('secret');
-        $this->assertFalse($signature->verifyFrom($response, 60));
     }
 
     /**
@@ -52,13 +40,13 @@ class SignatureTest extends TestCase
      *
      * @return \Mockery\MockeryInterface
      */
-    protected function getMessageWithPayload(string $key, string $payload, int $timestamp)
+    protected function getMessageWithPayload(string $key, string $payload)
     {
         $message = Faker::create()->message();
-        $signature = hash_hmac('sha256', "{$timestamp}.{$payload}", $key);
+        $signature = hash_hmac('sha256', $payload, $key);
 
-        $message->shouldReceive('getHeader')->with('X-Signature')->andReturn([
-            "t={$timestamp},v1={$signature}",
+        $message->shouldReceive('getHeader')->with('X-Insurance-Signature')->andReturn([
+            $signature,
         ])->shouldReceive('getBody')->andReturn($payload);
 
         return $message;
