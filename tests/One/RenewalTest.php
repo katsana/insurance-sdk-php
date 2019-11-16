@@ -33,7 +33,7 @@ class RenewalTest extends TestCase
 
         $faker = Faker::create()
                         ->sendJson('POST', $headers, $payload)
-                        ->expectEndpointIs("https://api.insure.katsana.com/quotations/{$plateNumber}/{$insurerCode}/pay")
+                        ->expectEndpointIs("https://api.insure.drivemark.io/quotations/{$plateNumber}/{$insurerCode}/pay")
                         ->shouldResponseWith(200, '{}');
 
         $response = $this->makeClientWithAccessToken($faker)

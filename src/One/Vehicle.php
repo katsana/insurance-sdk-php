@@ -25,9 +25,9 @@ class Vehicle extends Request
     ): Response {
         $this->requiresAccessToken();
 
-        $headers = [
+        $headers = \array_filter([
             'X-Insurance-UID' => $userUid,
-        ];
+        ]);
 
         $payload = array_merge([
             'plate_number' => $plateNumber,

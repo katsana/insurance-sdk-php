@@ -48,7 +48,7 @@ class QuotationTest extends TestCase
 
         $faker = Faker::create()
                         ->sendJson('POST', $headers, $payload)
-                        ->expectEndpointIs("https://api.insure.katsana.com/quotations/{$insurerCode}")
+                        ->expectEndpointIs("https://api.insure.drivemark.io/quotations/{$insurerCode}")
                         ->shouldResponseWith(200, '{}');
 
         $response = $this->makeClientWithAccessToken($faker)
@@ -115,7 +115,7 @@ class QuotationTest extends TestCase
 
         $faker = Faker::create()
                         ->sendJson('PATCH', $headers, $payload)
-                        ->expectEndpointIs("https://api.insure.katsana.com/quotations/{$plateNumber}/{$insurerCode}")
+                        ->expectEndpointIs("https://api.insure.drivemark.io/quotations/{$plateNumber}/{$insurerCode}")
                         ->shouldResponseWith(200, '{}');
 
         $response = $this->makeClientWithAccessToken($faker)

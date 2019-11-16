@@ -47,7 +47,7 @@ class VehicleTest extends TestCase
 
         $faker = Faker::create()
                         ->sendJson('POST', $headers, $payload)
-                        ->expectEndpointIs('https://api.insure.katsana.com/vehicles?include=customer')
+                        ->expectEndpointIs('https://api.insure.drivemark.io/vehicles?include=customer')
                         ->shouldResponseWith(200, '{}');
 
         $response = $this->makeClientWithAccessToken($faker)

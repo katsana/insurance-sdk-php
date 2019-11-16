@@ -20,7 +20,7 @@ class ClientCredentialsGrantTest extends TestCase
 
         $faker = Faker::create()
                         ->sendJson('POST', $headers, '{"scope":"*","grant_type":"client_credentials","client_id":"homestead","client_secret":"secret"}')
-                        ->expectEndpointIs('https://api.insure.katsana.com/oauth/token')
+                        ->expectEndpointIs('https://api.insure.drivemark.io/oauth/token')
                         ->shouldResponseWith(200, '{"access_token":"secret"}');
 
         $client = $this->makeClientWithAccessToken($faker);
@@ -47,7 +47,7 @@ class ClientCredentialsGrantTest extends TestCase
 
         $faker = Faker::create()
                         ->sendJson('POST', $headers, '{"scope":"*","grant_type":"client_credentials","client_id":"homestead","client_secret":"secret"}')
-                        ->expectEndpointIs('https://api.insure.katsana.com/oauth/token')
+                        ->expectEndpointIs('https://api.insure.drivemark.io/oauth/token')
                         ->shouldResponseWith(403, '{}');
 
         $client = $this->makeClientWithAccessToken($faker);
