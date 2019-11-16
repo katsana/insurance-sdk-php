@@ -9,10 +9,11 @@ class Vehicle extends Request
     /**
      * Save a vehicle information.
      *
-     * @param string $plateNumber          vehicle's plate number
-     * @param array  $ownerInformation     vehicle owner's information
-     * @param array  $insuranceInformation vehicle insurance's information
-     * @param array  $vehicleInformation   vehicle's information
+     * @param string      $plateNumber          vehicle's plate number
+     * @param array       $ownerInformation     vehicle owner's information
+     * @param array       $insuranceInformation vehicle insurance's information
+     * @param array       $vehicleInformation   vehicle's information
+     * @param string|null $userUid              user's unique identifier
      *
      * @return \Katsana\Insurance\Response
      */
