@@ -30,7 +30,7 @@ class Vehicle extends Request
             'X-Insurance-UID' => $userUid,
         ]);
 
-        $payload = array_merge([
+        $payload = \array_merge([
             'plate_number' => $plateNumber,
             'owner' => $ownerInformation,
             'insurance' => $insuranceInformation,
