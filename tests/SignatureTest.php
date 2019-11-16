@@ -34,9 +34,7 @@ class SignatureTest extends TestCase
     /**
      * Get mocked message with payload.
      *
-     * @param string $key
-     * @param string $payload
-     * @param int    $timestamp
+     * @param int $timestamp
      *
      * @return \Mockery\MockeryInterface
      */

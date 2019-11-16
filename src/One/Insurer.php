@@ -10,8 +10,6 @@ class Insurer extends Request
     /**
      * Get all available insurer.
      *
-     * @param \Katsana\Insurance\Query|null $query
-     *
      * @return \Katsana\Insurance\Response
      */
     public function all(?Query $query = null): Response

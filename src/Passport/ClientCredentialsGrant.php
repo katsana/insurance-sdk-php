@@ -22,8 +22,6 @@ class ClientCredentialsGrant extends Request
     /**
      * Create access token.
      *
-     * @param string $scope
-     *
      * @return \Katsana\Insurance\Response
      */
     public function authenticate(string $scope = '*'): Response
@@ -44,8 +42,6 @@ class ClientCredentialsGrant extends Request
 
     /**
      * Get API Header.
-     *
-     * @return array
      */
     protected function getApiHeaders(): array
     {
@@ -56,8 +52,6 @@ class ClientCredentialsGrant extends Request
 
     /**
      * Get API Body.
-     *
-     * @return array
      */
     protected function getApiBody(): array
     {

@@ -10,8 +10,6 @@ abstract class Request extends \Laravie\Codex\Request
     /**
      * Resolve the responder class.
      *
-     * @param \Psr\Http\Message\ResponseInterface $response
-     *
      * @return \Katsana\Insurance\Response
      */
     protected function responseWith(ResponseInterface $response): ResponseContract
@@ -21,8 +19,6 @@ abstract class Request extends \Laravie\Codex\Request
 
     /**
      * Get API Header.
-     *
-     * @return array
      */
     protected function getApiHeaders(): array
     {
@@ -39,8 +35,6 @@ abstract class Request extends \Laravie\Codex\Request
 
     /**
      * Check for access token is available before trying to make a request.
-     *
-     * @return void
      */
     final protected function requiresAccessToken(): void
     {
@@ -53,8 +47,6 @@ abstract class Request extends \Laravie\Codex\Request
      * Build query string from Katsana\Sdk\Query.
      *
      * @param \Katsana\Insurance\Query $query
-     *
-     * @return array
      */
     final protected function buildHttpQuery(?Query $query): array
     {

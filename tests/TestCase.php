@@ -36,10 +36,6 @@ abstract class TestCase extends PHPUnit
 
     /**
      * Make KATSANA SDK Client.
-     *
-     * @param \Laravie\Codex\Testing\Faker $faker
-     *
-     * @return \Katsana\Insurance\Client
      */
     protected function makeClient(Faker $faker): Client
     {
@@ -56,10 +52,6 @@ abstract class TestCase extends PHPUnit
 
     /**
      * Make KATSANA SDK Client.
-     *
-     * @param \Laravie\Codex\Testing\Faker $faker
-     *
-     * @return \Katsana\Insurance\Client
      */
     protected function makeClientWithAccessToken(Faker $faker): Client
     {

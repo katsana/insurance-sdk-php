@@ -17,7 +17,7 @@ class Client extends \Laravie\Codex\Client
      *
      * @var string
      */
-    protected $apiEndpoint = 'https://api.insure.katsana.com';
+    protected $apiEndpoint = 'https://api.insure.drivemark.io';
 
     /**
      * Default version.
@@ -37,8 +37,6 @@ class Client extends \Laravie\Codex\Client
 
     /**
      * Construct a new Client.
-     *
-     * @param \Http\Client\Common\HttpMethodsClient $http
      */
     public function __construct(HttpClient $http)
     {
@@ -47,9 +45,6 @@ class Client extends \Laravie\Codex\Client
 
     /**
      * Make a client.
-     *
-     * @param string|null $clientId
-     * @param string|null $clientSecret
      *
      * @return static
      */
@@ -62,8 +57,6 @@ class Client extends \Laravie\Codex\Client
 
     /**
      * Make a client using access token.
-     *
-     * @param string $accessToken
      *
      * @return static
      */
@@ -84,10 +77,6 @@ class Client extends \Laravie\Codex\Client
 
     /**
      * Authenticate helper using OAuth2.
-     *
-     * @param string $scope
-     *
-     * @return \Laravie\Codex\Contracts\Response
      */
     final public function authenticate(string $scope = '*'): ResponseContract
     {
@@ -96,8 +85,6 @@ class Client extends \Laravie\Codex\Client
 
     /**
      * Get resource default namespace.
-     *
-     * @return string
      */
     protected function getResourceNamespace(): string
     {

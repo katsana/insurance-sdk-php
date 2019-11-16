@@ -92,8 +92,7 @@ class Query
     /**
      * Set custom data.
      *
-     * @param string $name
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @return $this
      */
@@ -107,8 +106,6 @@ class Query
     /**
      * Set current page.
      *
-     * @param int|null $page
-     *
      * @return $this
      */
     protected function forPage(?int $page = null)
@@ -121,8 +118,6 @@ class Query
     /**
      * Set per page limit.
      *
-     * @param int|null $perPage
-     *
      * @return $this
      */
     protected function take(?int $perPage = null)
@@ -134,8 +129,6 @@ class Query
 
     /**
      * Build query string.
-     *
-     * @return array
      */
     public function toArray(): array
     {
@@ -146,10 +139,6 @@ class Query
 
     /**
      * Build query string.
-     *
-     * @param callable $callback
-     *
-     * @return array
      */
     public function build(callable $callback): array
     {
@@ -175,9 +164,6 @@ class Query
     /**
      * Handle dynamic method calls into the model.
      *
-     * @param string $method
-     * @param array  $parameters
-     *
      * @return mixed
      */
     public function __call(string $method, array $parameters)
@@ -191,9 +177,6 @@ class Query
 
     /**
      * Handle dynamic static method calls into the method.
-     *
-     * @param string $method
-     * @param array  $parameters
      *
      * @return mixed
      */

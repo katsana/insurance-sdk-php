@@ -10,7 +10,7 @@ class Vehicle extends Request
      * Save a vehicle information.
      *
      * @param string $plateNumber          vehicle's plate number
-     * @param array  $driverInformation    vehicle owner's information
+     * @param array  $ownerInformation     vehicle owner's information
      * @param array  $insuranceInformation vehicle insurance's information
      * @param array  $vehicleInformation   vehicle's information
      *
@@ -18,20 +18,25 @@ class Vehicle extends Request
      */
     public function save(
         string $plateNumber,
-        array $driverInformation,
+        array $ownerInformation,
         array $insuranceInformation,
-        array $vehicleInformation = []
+        array $vehicleInformation = [],
+        ?string $userUid = null
     ): Response {
         $this->requiresAccessToken();
 
+        $headers = [
+            'X-Insurance-UID' => $userUid,
+        ];
+
         $payload = array_merge([
             'plate_number' => $plateNumber,
-            'owner' => $driverInformation,
+            'owner' => $ownerInformation,
             'insurance' => $insuranceInformation,
         ], $vehicleInformation);
 
         return $this->sendJson(
-            'POST', 'vehicles?include=customer', $this->getApiHeaders(), $this->mergeApiBody($payload)
+            'POST', 'vehicles?include=customer', $this->mergeApiHeaders($headers), $this->mergeApiBody($payload)
         );
     }
 }

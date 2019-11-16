@@ -16,8 +16,6 @@ class Signature
 
     /**
      * Construct a new signature.
-     *
-     * @param string $key
      */
     public function __construct(string $key)
     {
@@ -26,11 +24,6 @@ class Signature
 
     /**
      * Verify signature from header and body.
-     *
-     * @param string $header
-     * @param string $body
-     *
-     * @return bool
      */
     final public function verify(string $header, string $body): bool
     {
@@ -41,10 +34,6 @@ class Signature
 
     /**
      * Verify signature from PSR7 response object.
-     *
-     * @param \Psr\Http\Message\ResponseInterface $message
-     *
-     * @return bool
      */
     final public function verifyFrom(ResponseInterface $message): bool
     {
