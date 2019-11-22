@@ -21,15 +21,15 @@
     },
     "require": {
         "php": ">=7.1",
-        "laravie/codex": "^5.0",
+        "laravie/codex": "^5.1",
         "laravie/codex-security": "^1.0.1"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9",
-        "mockery/mockery": "^1.2",
+        "mockery/mockery": "^1.2.3",
         "nesbot/carbon": "^1.26.3 || ^2.0",
         "symfony/http-client": "^4.3",
-        "phpunit/phpunit": "^7.5 || ^8.0"
+        "phpunit/phpunit": "^7.5 || ^8.3"
     },
     "extra": {
         "branch-alias": {
