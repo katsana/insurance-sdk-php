@@ -218,7 +218,7 @@ $quotation = $sdk->uses('Quotation');
 $response = $quotation->draft(
   $plateNumber,
   $insurerCode,
-  $driverInformation,
+  $ownerInformation,
   $vehicleInformation,
   $sumCovered,
   $addons
@@ -233,12 +233,12 @@ var_dump($response->toArray());
 | :-----------------------------------------| :------| :------- |:--------------
 | `$plateNumber`                            | string | required | The vehicle license plate.
 | `$insurerCode`                            | string | required | Insurer's Product Code.
-| `$driverInformation['fullname']`          | string | required | Driver's fullname.
-| `$driverInformation['birthdate']`         | string | required | Driver's birth date in `Y-m-d` format.
-| `$driverInformation['email']`             | string | required | Driver's e-mail address.
-| `$driverInformation['nric']`              | string | required | Driver's National Registration Identity Card (NRIC) ID.
-| `$driverInformation['phone_no']`          | string | required | Driver's phone number.
-| `$driverInformation['postcode']`          | string | required | Driver's current address postcode.
+| `$ownerInformation['fullname']`           | string | required | Driver's fullname.
+| `$ownerInformation['birthdate']`          | string | required | Driver's birth date in `Y-m-d` format.
+| `$ownerInformation['email']`              | string | required | Driver's e-mail address.
+| `$ownerInformation['nric']`               | string | required | Driver's National Registration Identity Card (NRIC) ID.
+| `$ownerInformation['phone_no']`           | string | required | Driver's phone number.
+| `$ownerInformation['postcode']`           | string | required | Driver's current address postcode.
 | `$insuranceInformation['ended_at']`       | string | required | Current vehicle insurance expiry date in `Y-m-d` format.
 | `$vehicleInformation['maker']`            | string | optional | Vehicle's maker. E.g `Proton`, `Perodua`, `Honda` etc.
 | `$vehicleInformation['model']`            | string | optional | Vehicle's maker. E.g `Iriz`, `Persona`, `MyVi`, `Civic`, `Vios` etc.
@@ -443,7 +443,7 @@ $vehicles = $sdk->uses('Vehicle');
 
 $response = $sdk->save(
   $plateNumber,
-  $driverInformation,
+  $ownerInformation,
   $insuranceInformation,
   $vehicleInformation
 );
@@ -456,12 +456,12 @@ var_dump($response->toArray());
 | Parameter                                 | Type    | Rule     |  Description
 | :-----------------------------------------| :------ | :------- |:--------------
 | `$plateNumber`                            | string  | required | The vehicle license plate.
-| `$driverInformation['fullname']`          | string  | required | Driver's fullname.
-| `$driverInformation['birthdate']`         | string  | required | Driver's birth date in `Y-m-d` format.
-| `$driverInformation['email']`             | string  | required | Driver's e-mail address.
-| `$driverInformation['nric']`              | string  | required | Driver's National Registration Identity Card (NRIC) ID.
-| `$driverInformation['phone_no']`          | string  | required | Driver's phone number.
-| `$driverInformation['postcode']`          | string  | required | Driver's current address postcode.
+| `$ownerInformation['fullname']`           | string  | required | Driver's fullname.
+| `$ownerInformation['birthdate']`          | string  | required | Driver's birth date in `Y-m-d` format.
+| `$ownerInformation['email']`              | string  | required | Driver's e-mail address.
+| `$ownerInformation['nric']`               | string  | required | Driver's National Registration Identity Card (NRIC) ID.
+| `$ownerInformation['phone_no']`           | string  | required | Driver's phone number.
+| `$ownerInformation['postcode']`           | string  | required | Driver's current address postcode.
 | `$insuranceInformation['ended_at']`       | string  | required | Current vehicle insurance expiry date in `Y-m-d` format.
 | `$vehicleInformation['maker']`            | string  | required | Vehicle's maker. E.g `Proton`, `Perodua`, `Honda` etc.
 | `$vehicleInformation['model']`            | string  | required | Vehicle's maker. E.g `Iriz`, `Persona`, `MyVi`, `Civic`, `Vios` etc.
